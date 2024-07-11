@@ -1,6 +1,4 @@
-import Projectclass
+import Projectclass as projc
 savedatafolder = "savedata/"
 
-classref = Projectclass
-
-classref.newItem()
+classref = projc.project("test", "savedata")
