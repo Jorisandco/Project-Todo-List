@@ -1,7 +1,6 @@
 import os.path
 
-class project:
-
+class projectList:
     def __init__(self, Projectname, savedatafolder):
       self.savedata = savedatafolder
       self.Projectname = Projectname
@@ -12,7 +11,6 @@ class project:
         backup = open("savedata/backup/backupsavedataPRJList.txt", "w")
         backup.write(fileR.read())
         fileR.close()
-
 
 #all the stuff for the project list
     def displaylist(self):
@@ -58,18 +56,3 @@ class project:
         with open(self.projectslistpath , "a+") as fileR:
             fileR.write(f"project.{name}-{projectLocation}\n-")
             self.openProject(projectLocation)
-
-
-
-
-    #all the things for the project items
-    def newItem(self, name):
-        print("made new item")
-    def removeItem(self):
-        print("item removed")
-    def setItemTodone():
-        print("item finished")
-    def setItemtoWorkingon(self):
-        print("you are now working on this item")
-    def SetItemToNotFinished(self):
-        print("item is now in not finished list")

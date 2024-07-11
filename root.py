@@ -1,8 +1,9 @@
-import Projectclass as projc
+import classes.ProjectlistClass as projcLST
+import classes.ProjectClass as PRJ
+import classes.AppWindow as App
+
 savedatafolder = "savedata/"
 
-classref = projc.project("test", "savedata")
+classref = projcLST.projectList("test", "savedata")
 
 classref.displaylist()
-
-# classref.createNewProject("stealth2")
