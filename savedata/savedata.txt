@@ -1,5 +1,2 @@
-
- 
- stealth.Project 
- savedata/stealth 
- -
+project.stealth-savedata/stealth-
+project.stealth2-savedata/stealth2-

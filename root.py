@@ -3,4 +3,6 @@ savedatafolder = "savedata/"
 
 classref = projc.project("test", "savedata")
 
-classref.createNewProject("stealth")
+classref.displaylist()
+
+# classref.createNewProject("stealth2")

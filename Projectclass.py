@@ -5,22 +5,39 @@ class project:
     def __init__(self, Projectname, savedatafolder):
       self.savedata = savedatafolder
       self.Projectname = Projectname
-      self.projectslist= f"{self.savedata}/savedata.txt"
+      self.projectslistpath= f"{self.savedata}/savedata.txt"
 
 # all the diffrent types of ways to open the project save file
-      self.fileR = open(self.projectslist, "r+")
-
-
-      backup = open("savedata/backup/backupsavedataPRJList.txt", "w")
-      backup.write(self.fileR.read())
-      self.fileR.close
+      with open(self.projectslistpath , "r+") as fileR:
+        backup = open("savedata/backup/backupsavedataPRJList.txt", "w")
+        backup.write(fileR.read())
+        fileR.close()
 
 
 #all the stuff for the project list
     def displaylist(self):
-        self.fileR
+        actualNames = []
+        locations = []
+        with open(self.projectslistpath, "r") as PRJList:
 
-        self.fileR.close()
+            string = PRJList.read()
+            
+            unsorted = string.split("-")
+
+            count = True
+
+            for item in unsorted:
+                if count == True:
+                    name = item
+                    actualNames.append(name)
+                    count = False
+                else:
+                    locations.append(item)
+                    count = True
+            
+            print("names: ", actualNames)
+            print("locations: ", locations)
+
 
     def openProject(self, name):
         self.CProcject = name
@@ -33,16 +50,14 @@ class project:
         self.fileR.close()
 
     def createNewProject(self, name):
-       projectLocation = f"{self.savedata}/{name}"
-       newproject =  open (f"{self.savedata}/{name}", "w")
+        projectLocation = f"{self.savedata}/{name}"
+        newproject = open (f"{self.savedata}/{name}", "w")
 
-       newproject.write("Unfinished- \n working on- \n complete-")
-       newproject.close()
-
-       self.fileR.write(f"\n \n {name}.Project \n {projectLocation} \n -")
-
-       self.fileR.close()
-       self.openProject(projectLocation)
+        newproject.write("Unfinished-\nworking on-\ncomplete-")
+        newproject.close()
+        with open(self.projectslistpath , "a+") as fileR:
+            fileR.write(f"project.{name}-{projectLocation}\n-")
+            self.openProject(projectLocation)
 
 
 
