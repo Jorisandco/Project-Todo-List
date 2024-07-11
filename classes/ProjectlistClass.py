@@ -2,9 +2,9 @@ import os.path
 
 class projectList:
     def __init__(self, Projectname, savedatafolder):
-      self.savedata = savedatafolder
+      self.savedataFolder = savedatafolder
       self.Projectname = Projectname
-      self.projectslistpath= f"{self.savedata}/savedata.txt"
+      self.projectslistpath= f"{self.savedataFolder}/savedata.txt"
 
 # all the diffrent types of ways to open the project save file
       with open(self.projectslistpath , "r+") as fileR:
@@ -35,21 +35,22 @@ class projectList:
             
             print("names: ", actualNames)
             print("locations: ", locations)
+        return actualNames, locations
 
 
-    def openProject(self, name):
+    def openProjectFile(self, name):
         self.CProcject = name
         with open(self.CProcject , "r") as PRJ:
             print(PRJ.read())
+        return PRJ.read
 
     def saveproject(self):
-        self.fileR
-
-        self.fileR.close()
+        with open(self.Projectname , "a+") as save:
+            print("implement save system")
 
     def createNewProject(self, name):
-        projectLocation = f"{self.savedata}/{name}"
-        newproject = open (f"{self.savedata}/{name}", "w")
+        projectLocation = f"{self.savedataFolder}/{name}"
+        newproject = open (f"{self.savedataFolder}/{name}", "w")
 
         newproject.write("Unfinished-\nworking on-\ncomplete-")
         newproject.close()
